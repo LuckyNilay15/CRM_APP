@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { databaseConnection } = require("../config/db");
+//const mongoose = require("mongoose");
+const { mongoose } = require("../config/db");
 const deliveryReceiptSchema = new mongoose.Schema({
   //audience_id: { type: mongoose.Schema.Types.ObjectId, ref: "Audience" },
   communication_log_id: {
@@ -13,4 +13,4 @@ const deliveryReceiptSchema = new mongoose.Schema({
 // deliveryReceiptSchema.index({ communication_log_id: 1 });
 // deliveryReceiptSchema.index({ status: 1 });
 
-module.exports = databaseConnection.model("DeliveryReceipt", deliveryReceiptSchema);
+module.exports = mongoose.model("DeliveryReceipt", deliveryReceiptSchema);

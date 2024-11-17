@@ -1,17 +1,21 @@
-const app = require("./app");
-const {databaseConnection} = require("./config/db");
+const app = require("./app"); // Ensure you have the app configured
+const { connectDB } = require("./config/db");
+//require("dotenv").config({ path: "./.env" });
 
-// Initialize database connections
-(async () => {
+const startServer = async () => {
   try {
-    await Promise.all([databaseConnection]);
-    console.log("Both databases connected successfully.");
+    // Connect to the database
+    await connectDB();
 
-    // Start server
+    // Start the server
     const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+    app.listen(PORT, () => {
+      console.log(`Server running on http://localhost:${PORT}`);
+    });
   } catch (err) {
-    console.error("Failed to connect to databases:", err.message);
-    process.exit(1); // Exit the application if database connection fails
+    console.error("Failed to start the server:", err.message);
+    process.exit(1); // Exit the process on failure
   }
-})();
+};
+
+startServer();

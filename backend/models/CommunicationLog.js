@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { databaseConnection } = require("../config/db");
+//const mongoose = require("mongoose");
+const { mongoose } = require("../config/db");
 
 const communicationLogSchema = new mongoose.Schema({
   campaign_id: { type: mongoose.Schema.Types.ObjectId, ref: "Campaign" },
@@ -13,4 +13,4 @@ const communicationLogSchema = new mongoose.Schema({
 { timestamps: true }
 );
 
-module.exports = databaseConnection.model("CommunicationLog", communicationLogSchema);
+module.exports = mongoose.model("CommunicationLog", communicationLogSchema);

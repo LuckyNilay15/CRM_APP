@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { databaseConnection } = require("../config/db");
+//const mongoose = require("mongoose");
+const { mongoose } = require("../config/db");
 
 const audienceSchema = new mongoose.Schema({
   name: { type: String, required: true },        // Audience name
@@ -8,4 +8,4 @@ const audienceSchema = new mongoose.Schema({
   created_at: { type: Date, default: Date.now },// Timestamp of creation
 });
 
-module.exports = databaseConnection.model("Audience", audienceSchema);
+module.exports = mongoose.model("Audience", audienceSchema);

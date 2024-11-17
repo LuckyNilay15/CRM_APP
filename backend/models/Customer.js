@@ -1,6 +1,5 @@
-const mongoose = require("mongoose"); 
-const { databaseConnection } = require("../config/db");
-
+//const mongoose = require("mongoose"); 
+const { mongoose } = require("../config/db");
 const customerSchema = new mongoose.Schema({
   name: String,
   email: String,
@@ -10,4 +9,4 @@ const customerSchema = new mongoose.Schema({
   last_visit: { type: Date, default: Date.now },
 });
 
-module.exports = databaseConnection.model("Customer", customerSchema);
+module.exports = mongoose.model("Customer", customerSchema);

@@ -1,6 +1,5 @@
-const mongoose = require("mongoose");
-const { databaseConnection } = require("../config/db");
-
+//const mongoose = require("mongoose");
+const { mongoose } = require("../config/db");
 const campaignSchema = new mongoose.Schema({
   name: String, // Name of the campaign
   audience_id: { type: mongoose.Schema.Types.ObjectId, ref: "Audience" }, // Linked audience
@@ -13,4 +12,4 @@ const campaignSchema = new mongoose.Schema({
   created_at: { type: Date, default: Date.now }, // Campaign creation timestamp
 });
 
-module.exports = databaseConnection.model("Campaign", campaignSchema);
+module.exports = mongoose.model("Campaign", campaignSchema);

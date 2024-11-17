@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const { databaseConnection } = require("../config/db");
+//const mongoose = require("mongoose");
+const { mongoose } = require("../config/db");
 
 const orderSchema = new mongoose.Schema({
   customer_id: { type: mongoose.Schema.Types.ObjectId, ref: "Customer", required: true },
@@ -9,4 +9,4 @@ const orderSchema = new mongoose.Schema({
   created_at: { type: Date, default: Date.now },
 });
 
-module.exports = databaseConnection.model("Order", orderSchema);
+module.exports = mongoose.model("Order", orderSchema);
